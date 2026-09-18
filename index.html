@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- Evita el zoom automático del navegador al tocar botones en celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Visor Almanza</title>
+    
+    <link href="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="map"></div>
+    
+    <!-- Botón flotante exclusivo para vista móvil -->
+    <button id="btn-capas" class="fab-btn">🗺️ Capas</button>
+
+    <!-- Panel de control adaptativo -->
+    <div id="panel-controles" class="layer-control">
+        <div class="panel-header">
+            <h3>Visor Almanza</h3>
+            <button id="btn-cerrar-panel" class="close-btn">✖</button>
+        </div>
+        
+        <h4>Mapa Base</h4>
+        <div class="opciones-grupo">
+            <label><input type="radio" name="basemap" value="argenmap" checked> Argenmap</label>
+            <label><input type="radio" name="basemap" value="google"> Google Hybrid</label>
+        </div>
+        
+        <hr>
+        
+        <h4>Capas Vectoriales</h4>
+        <div class="opciones-grupo">
+            <label><input type="checkbox" id="toggle-parcelario" checked> Parcelario</label>
+            <label><input type="checkbox" id="toggle-inundable"> Zona Inundable</label>
+            <label><input type="checkbox" id="toggle-riesgo"> Zona de Riesgo</label>
+            <label><input type="checkbox" id="toggle-ruta"> Track de Ruta</label>
+            <label><input type="checkbox" id="toggle-relevamiento" checked> Relevamiento</label>
+            <label><input type="checkbox" id="toggle-fotos"> Puntos Fotográficos</label>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
