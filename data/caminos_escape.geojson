@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "caminos_escape",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -67.540197086621262, -54.867741797625285 ], [ -67.540260173068859, -54.867215831372512 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 3 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -67.541944667267202, -54.867869669379871 ], [ -67.542153739318579, -54.867330419345265 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 6 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -67.543278186993561, -54.868040165052655 ], [ -67.543537389089565, -54.867479383709835 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 7 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -67.54598785036444, -54.86828981943065 ], [ -67.545886442530971, -54.867642671571005 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 8 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -67.54742488532068, -54.868283730299488 ], [ -67.547491748411787, -54.86787542839064 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 9 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -67.547644094042823, -54.868286774865069 ], [ -67.547674731080747, -54.867935587076339 ] ] ] } },
+{ "type": "Feature", "properties": { "id": 10 }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -67.552344903306505, -54.868910910810044 ], [ -67.552694758549393, -54.868430463883634 ] ] ] } }
+]
+}

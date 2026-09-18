@@ -98,6 +98,39 @@ map.on('load', () => {
     map.addSource('relevamiento-src', { type: 'geojson', data: './data/relevamiento.geojson' });
     map.addSource('fotos-src', { type: 'geojson', data: './data/fotos.geojson' });
     map.addSource('riesgo-src', { type: 'geojson', data: './data/zona_conflicto.geojson' });
+    map.addSource('escape-src', { type: 'geojson', data: './data/caminos_escape.geojson' });
+const flechaSvg = `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 4L16 10L6 16V4Z" fill="#1976D2"/></svg>`;
+    const flechaImg = new Image();
+    flechaImg.onload = () => {
+        if (!map.hasImage('flecha-dir')) map.addImage('flecha-dir', flechaImg);
+    };
+    flechaImg.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(flechaSvg);
+
+    // Capa base: La línea (Ahora azul)
+    map.addLayer({
+        'id': 'capa-escape-linea',
+        'type': 'line',
+        'source': 'escape-src',
+        'paint': {
+            'line-color': '#1976D2', // Azul intenso contrastante
+            'line-width': 10,
+            'line-dasharray': [2, 1] // Línea punteada
+        }
+    });
+
+    // Capa de flechas direccionales (Actualizada a Icono)
+    map.addLayer({
+        'id': 'capa-escape-flechas',
+        'type': 'symbol',
+        'source': 'escape-src',
+        'layout': {
+            'symbol-placement': 'line', // Coloca el símbolo sobre la línea
+            'symbol-spacing': 50,       // Espacio en píxeles entre cada flecha
+            'icon-image': 'flecha-dir', // Usa el SVG creado arriba
+            'icon-size': 3.5,
+            'icon-rotation-alignment': 'map' // Hace que la flecha rote siguiendo la dirección de la ruta
+        }
+    });
 
     // 3. Capa: Zona Inundable (Oculta por defecto)
     map.addLayer({
@@ -357,12 +390,16 @@ const layerMapping = {
     'toggle-ruta': ['capa-ruta'],
     'toggle-relevamiento': ['capa-relevamiento-halo', 'capa-relevamiento-icono'],
     'toggle-fotos': ['capa-fotos'],
-    'toggle-riesgo': ['capa-riesgo']
+    'toggle-riesgo': ['capa-riesgo'],
+    'toggle-escape': ['capa-escape-linea', 'capa-escape-flechas']
 };
 
 // Alternar visibilidad de capas y gatillar zoom
 Object.keys(layerMapping).forEach(checkboxId => {
-    document.getElementById(checkboxId).addEventListener('change', function(e) {
+    const el = document.getElementById(checkboxId);
+    if (!el) return; // Evita errores si el checkbox no existe en el HTML
+    
+    el.addEventListener('change', function(e) {
         const isChecked = e.target.checked;
         const visibility = isChecked ? 'visible' : 'none';
         
@@ -394,7 +431,6 @@ document.querySelectorAll('input[name="basemap"]').forEach(radio => {
         }
     });
 });
-
 
 // ============================================================
 // COMPORTAMIENTO MÓVIL
