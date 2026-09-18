@@ -121,7 +121,7 @@ map.on('load', () => {
         'paint': {
             'fill-color': '#E0E0E0',
             'fill-opacity': 0.4,
-            'fill-outline-color': '#9E9E9E'
+            'fill-outline-color': '#000000'
         }
     });
 
