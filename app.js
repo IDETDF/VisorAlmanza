@@ -286,7 +286,7 @@ map.on('load', () => {
         let descriptionHTML = props['description'] || props['Name'] || ''; 
 
         if (descriptionHTML.includes('<img') && descriptionHTML.includes('src="files/')) {
-            descriptionHTML = descriptionHTML.replace('src="files/', 'src="./fotos/');
+            descriptionHTML = descriptionHTML.replace('src="files/', 'src="./files/');
             descriptionHTML = descriptionHTML.replace('width:400px', 'width:100%; max-width:300px; border-radius: 4px;');
         }
 
